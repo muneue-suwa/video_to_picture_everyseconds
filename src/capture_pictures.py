@@ -2,7 +2,7 @@ import cv2
 import os
 
 
-def save_frame_range_sec(video_path, start_sec,
+def save_frame_range_sec(video_path, start_sec, step_sec,
                          dir_path, basename, ext='jpg'):
     cap = cv2.VideoCapture(video_path)
     
@@ -18,8 +18,7 @@ def save_frame_range_sec(video_path, start_sec,
     fps = cap.get(cv2.CAP_PROP_FPS)
 
     stop_sec = round(cap.get(cv2.CAP_PROP_FRAME_COUNT) * fps)
-    step_sec = 60
-    
+
     for sec in range(start_sec, stop_sec, step_sec):
         n = round(fps * sec)
         cap.set(cv2.CAP_PROP_POS_FRAMES, n)
