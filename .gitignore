@@ -2,3 +2,4 @@
 .vscode/
 data/
 *.MOV
+src/__pycache__/
