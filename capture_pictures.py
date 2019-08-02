@@ -2,7 +2,7 @@ import cv2
 import os
 
 
-def save_frame_range_sec(video_path, start_sec, stop_sec, step_sec,
+def save_frame_range_sec(video_path, start_sec,
                          dir_path, basename, ext='jpg'):
     cap = cv2.VideoCapture(video_path)
     
@@ -16,6 +16,9 @@ def save_frame_range_sec(video_path, start_sec, stop_sec, step_sec,
     digit = len(str(int(cap.get(cv2.CAP_PROP_FRAME_COUNT))))
     
     fps = cap.get(cv2.CAP_PROP_FPS)
+
+    stop_sec = cap.get(cv2.CAP_PROP_FRAME_COUNT) * fps
+    step_sec = 60
     
     for sec in range(start_sec, stop_sec, step_sec):
         n = round(fps * sec)
@@ -28,6 +31,5 @@ def save_frame_range_sec(video_path, start_sec, stop_sec, step_sec,
             return
 
 if __name__ == "__main__":
-    save_frame_range_sec('4 hour.MOV',
-                         57, 15*60, 60,
+    save_frame_range_sec('4 hour.MOV', 57,
                          'data/result_range_sec', 'sample_video_img')
