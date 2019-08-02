@@ -17,7 +17,7 @@ def save_frame_range_sec(video_path, start_sec,
     
     fps = cap.get(cv2.CAP_PROP_FPS)
 
-    stop_sec = cap.get(cv2.CAP_PROP_FRAME_COUNT) * fps
+    stop_sec = round(cap.get(cv2.CAP_PROP_FRAME_COUNT) * fps)
     step_sec = 60
     
     for sec in range(start_sec, stop_sec, step_sec):
@@ -25,7 +25,7 @@ def save_frame_range_sec(video_path, start_sec,
         cap.set(cv2.CAP_PROP_POS_FRAMES, n)
         ret, frame = cap.read()
         if ret:
-            cv2.imwrite('{}_{}.{}'.format(base_path, str(n).zfill(digit), ext), frame)
+            cv2.imwrite('{}_{:02d}{:02d}.{}'.format(base_path, sec//60, sec%60, ext), frame)
             n += 1
         else:
             return
