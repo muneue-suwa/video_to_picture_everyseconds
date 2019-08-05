@@ -1,6 +1,11 @@
 import cv2
 import os
 
+"""
+Copyright (c) 2017 nkmk
+Released under the MIT license
+https://github.com/nkmk/python-snippets/blob/master/LICENSE
+"""
 
 def save_frame_range_sec(video_path, start_sec, step_sec,
                          dir_path, basename, ext='jpg'):
