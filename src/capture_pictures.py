@@ -30,5 +30,5 @@ def save_frame_range_sec(video_path, start_sec, step_sec,
             return
 
 if __name__ == "__main__":
-    save_frame_range_sec('4 hour.MOV', 57,
+    save_frame_range_sec('4 hour.MOV', 57, 60,
                          'data/result_range_sec', 'sample_video_img')
