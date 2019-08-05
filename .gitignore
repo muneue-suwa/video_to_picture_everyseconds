@@ -3,3 +3,5 @@
 data/
 *.MOV
 src/__pycache__/
+src/build/
+src/dist/
