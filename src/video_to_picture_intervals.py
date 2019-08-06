@@ -43,13 +43,11 @@ def main():
             return False
 
     picture_filename = path.basename(filename).rsplit(".", 1)[0]
-
     datetimeNow = datetime.now()
-
     dir_name = "{}_{}".format(filename.rsplit(".", 1)[0],
-                                datetimeNow.strftime('%Y%m%d_%H%M%S'))
+                              datetimeNow.strftime('%Y%m%d_%H%M%S'))
     save_frame_range_sec(filename, start_time, step_time,
-                            dir_name, picture_filename)
+                         dir_name, picture_filename)
 
     return True
 
