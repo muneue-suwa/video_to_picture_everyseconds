@@ -1,20 +1,25 @@
-from capture_pictures import save_frame_range_sec
-import tkinter
-from tkinter.filedialog import askopenfilename
 from os import path
 from pathlib import Path
 from datetime import datetime
+import sys
+sys.path.append(path.dirname(path.abspath(sys.argv[0])))
+from capture_pictures import save_frame_range_sec
 
 def get_filename():
-    root = tkinter.Tk()
-    root.withdraw()
-    filename = askopenfilename(filetypes=[("Video", "*.MOV")],
-                               initialdir=path.join(str(Path.home()),
-                               "Desktop"))
+    if len(sys.argv) == 2:
+        filename = sys.argv[1]
+    else:
+        import tkinter
+        from tkinter.filedialog import askopenfilename
+        root = tkinter.Tk()
+        root.withdraw()
+        filename = askopenfilename(filetypes=[("Video", "*.MOV")],
+                                initialdir=path.join(str(Path.home()),
+                                "Desktop"))
 
-    if filename == "":
-        print("no file")
-        return False
+        if filename == "":
+            print("no file")
+            return False
 
     print(filename)
     return filename
