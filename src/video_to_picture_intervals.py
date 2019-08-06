@@ -14,8 +14,8 @@ def get_filename():
         root = tkinter.Tk()
         root.withdraw()
         filename = askopenfilename(filetypes=[("Video", "*.MOV")],
-                                initialdir=path.join(str(Path.home()),
-                                "Desktop"))
+                                   initialdir=path.join(str(Path.home()),
+                                   "Desktop"))
 
         if filename == "":
             print("no file")
