@@ -5,3 +5,5 @@ data/
 src/__pycache__/
 src/build/
 src/dist/
+python-3.6.8-embed-amd64/
+python-3.6.8-embed-amd64.zip
