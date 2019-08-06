@@ -18,19 +18,14 @@ def save_frame_range_sec(video_path, start_sec, step_sec,
     os.makedirs(dir_path, exist_ok=True)
     base_path = os.path.join(dir_path, basename)
     
-    digit = len(str(int(cap.get(cv2.CAP_PROP_FRAME_COUNT))))
-    
     fps = cap.get(cv2.CAP_PROP_FPS)
-
     stop_sec = round(cap.get(cv2.CAP_PROP_FRAME_COUNT) * fps)
 
     for sec in range(start_sec, stop_sec, step_sec):
-        n = round(fps * sec)
-        cap.set(cv2.CAP_PROP_POS_FRAMES, n)
+        cap.set(cv2.CAP_PROP_POS_FRAMES, round(fps * sec))
         ret, frame = cap.read()
         if ret:
             cv2.imwrite('{}_{:02d}{:02d}.{}'.format(base_path, sec//60, sec%60, ext), frame)
-            n += 1
         else:
             return
 
