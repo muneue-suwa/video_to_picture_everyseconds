@@ -1,4 +1,5 @@
 @echo off
-cd .\src
-..\python-3.6.8-embed-amd64\python .\video_to_picture_intervals.py
+echo Installing...
+powershell -NoProfile -ExecutionPolicy Unrestricted .\powershell\video_to_picture_intervals.ps1
+echo Completed
 pause
