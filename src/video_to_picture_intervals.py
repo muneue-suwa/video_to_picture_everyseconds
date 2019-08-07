@@ -55,12 +55,15 @@ def main():
     datetimeNow = datetime.now()
     dir_name = "{}_{}".format(filename.rsplit(".", 1)[0],
                               datetimeNow.strftime('%Y%m%d_%H%M%S'))
-    save_frame_range_sec(filename, start_time, step_time,
-                         dir_name, picture_filename)
-
-    return True
+    print("Start converting...")
+    if save_frame_range_sec(filename, start_time, step_time,
+                            dir_name, picture_filename):
+        print("Successfully completed")
+        return True
+    else:
+        print("Failed")
+        return False
 
 
 if __name__ == "__main__":
-    if not main():
-        print("Failed")
+    main()

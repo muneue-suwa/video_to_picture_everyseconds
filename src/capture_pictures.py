@@ -33,6 +33,7 @@ def save_frame_range_sec(video_path, start_sec, step_sec,
         else:
             break
         sec += step_sec
+    print("Saved directory: {}".format(dir_path))
     return True
 
 if __name__ == "__main__":
