@@ -4,7 +4,6 @@ lazy-object-proxy==1.4.1
 mccabe==0.6.1
 numpy==1.17.0
 opencv-python==4.1.0.25
-pkg-resources==0.0.0
 pylint==2.3.1
 six==1.12.0
 typed-ast==1.4.0
