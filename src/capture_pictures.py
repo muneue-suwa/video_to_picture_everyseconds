@@ -13,21 +13,27 @@ def save_frame_range_sec(video_path, start_sec, step_sec,
     
     if not cap.isOpened():
         print("False")
-        return
-    
+        return False
+
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    end_sec = cap.get(cv2.CAP_PROP_FRAME_COUNT) * fps
+    if start_sec > end_sec:
+        print("start time > end time")
+        return False
+
     os.makedirs(dir_path, exist_ok=True)
     base_path = os.path.join(dir_path, basename)
-    
-    fps = cap.get(cv2.CAP_PROP_FPS)
-    stop_sec = round(cap.get(cv2.CAP_PROP_FRAME_COUNT) * fps)
 
-    for sec in range(start_sec, stop_sec, step_sec):
+    sec = start_sec
+    while sec < end_sec:
         cap.set(cv2.CAP_PROP_POS_FRAMES, round(fps * sec))
         ret, frame = cap.read()
         if ret:
-            cv2.imwrite('{}_{:02d}{:02d}.{}'.format(base_path, sec//60, sec%60, ext), frame)
+            cv2.imwrite('{}_{:02.0f}m{:05.2f}s.{}'.format(base_path, sec//60, sec%60, ext), frame)
         else:
-            return
+            break
+        sec += step_sec
+    return True
 
 if __name__ == "__main__":
     save_frame_range_sec('4 hour.MOV', 57, 60,
