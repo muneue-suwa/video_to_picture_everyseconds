@@ -36,7 +36,7 @@ def main():
         if start_time < 0:
             raise ValueError
     except ValueError:
-        print("Input float for the start time")
+        print("Input float(>=0) for the start time")
         return False
 
     step_time = input("step time(sec)[default is 60sec]: ")
@@ -48,7 +48,7 @@ def main():
             if step_time <= 0:
                 raise ValueError
         except ValueError:
-            print("Input float for the step time")
+            print("Input float (>0) for the step time")
             return False
 
     picture_filename = path.basename(filename).rsplit(".", 1)[0]
