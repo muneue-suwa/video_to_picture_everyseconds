@@ -13,7 +13,7 @@ def get_filename():
         from tkinter.filedialog import askopenfilename
         root = tkinter.Tk()
         root.withdraw()
-        filename = askopenfilename(filetypes=[("Video", "*.MOV")],
+        filename = askopenfilename(filetypes=[("Video", "*.MOV;*.MP4;*.AVI")],
                                    initialdir=path.join(str(Path.home()),
                                    "Desktop"))
 
