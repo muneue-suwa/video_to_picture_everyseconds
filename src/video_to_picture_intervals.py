@@ -33,6 +33,8 @@ def main():
     start_time = input("start time(sec): ")
     try:
         start_time = int(start_time)
+        if start_time < 0:
+            raise ValueError
     except ValueError:
         print("Input integer for the start time")
         return False
@@ -43,6 +45,8 @@ def main():
     else:
         try:
             step_time = int(step_time)
+            if step_time < 1:
+                raise ValueError
         except ValueError:
             print("Input integer for the step time")
             return False
