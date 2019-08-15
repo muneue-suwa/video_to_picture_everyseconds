@@ -5,5 +5,5 @@ $dialog.InitialDirectory = "~/Desktop"
 $dialog.Title = "Choose the video file"
 
 if($dialog.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK){
-  ./python-3.6.8-embed-amd64/python ./src/video_to_picture_intervals.py $dialog.FileName
+  ./python-3.6.8-embed-amd64/python ./src/video_to_picture_everyseconds.py $dialog.FileName
 }
